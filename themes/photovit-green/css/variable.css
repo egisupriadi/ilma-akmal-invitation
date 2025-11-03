@@ -1,0 +1,15 @@
+:root {
+    --transition-counter-bg: #5a4835;
+    --counter-bg: #5a4835;
+    --counter-color: #fff;
+    --counter-radius: 5px;
+    --counter-line-bg: #5a4835;
+    --counter-line-size: 0.1px;
+    --invitation-bg: #dae8f7;
+    --bs-primary: #7793b7;
+    --bs-primary-hover: #506278;
+    --bs-primary-light: #e3eefa;
+    --bs-secondary: #354252;
+    --bs-secondary-hover: #68723f;
+    --bs-secondary-light: #e8eae2;
+}
