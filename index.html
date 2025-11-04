@@ -860,6 +860,25 @@
             width: 200%;
             height: 200%;
         }
+
+        #btnMusic {
+            position: fixed;
+            bottom: 60px;
+            right: 5px;
+            z-index: 999;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        #iconMusic {
+            font-size: 22px;
+            color: var(--bs-primary);
+        }
     </style>
 </head>
 <!--end::Head-->
@@ -875,6 +894,17 @@
         </div>
     </div>
     <!--begin::Main-->
+    <div id="audio-container">
+        <audio id="song" loop>
+            <source src="assets/audio/audio.mp3" type="audio/mp3">
+        </audio>
+
+        <!-- Tombol Toggle Musik -->
+        <div id="btnMusic">
+            <i id="iconMusic" class="bi bi-volume-up-fill"></i>
+        </div>
+
+    </div>
     <!--begin::Root-->
     <div class="d-flex flex-column flex-root">
         <!--begin::Page-->
@@ -935,7 +965,7 @@
                                                                 <button id="btn-open-invitation" type="button"
                                                                     data-bs-dismiss="modal"
                                                                     class="btn btn-default bg-white text-dark mt-5 mb-10 btn-sm"
-                                                                    onclick="playVideoAt(8)"><i
+                                                                    onclick="playAudio()"><i
                                                                         class="bi bi-envelope-open text-dark"></i> Buka
                                                                     Undangan</button>
                                                             </div>
@@ -1171,12 +1201,12 @@
                                                                 Sudirman Copong No.111, Desa, Sucikaler, Karangpawitan,
                                                                 Garut Regency, Jawa Barat 44162</div>
                                                             <a class="btn btn-sm btn-primary mt-1"
-                                                                href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=+Ajeng+Febrian+%26+Teddy+Prakarsa&amp;details=Hotel+X-More&amp;dates=20251231T010000.0Z/20251231T030000.0Z&amp;location=https://maps.app.goo.gl/Dhym5MrmAGv1h7Ms5&amp;trp=false&amp;sprop=&amp;sprop=name:"
+                                                                href="https://www.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Ilma+%26+Akmal&dates=20251215T020000Z/20251215T080000Z&details=Merupakan+kehormatan+bagi+kami+apabila+Bapak/Ibu+berkenan+hadir+dalam+acara+pernikahan+Ilma+%26+Akmal.%0A%0A%F0%9F%97%BA%EF%B8%8F+Google+Maps:+https://maps.app.goo.gl/QzVWXxNpZW9kTEyt9%3Fg_st%3Diw&location=GSC+Copong,+Jalan+Sudirman+Copong+No.111,+Desa,+Sucikaler,+Karangpawitan,+Garut+Regency,+Jawa+Barat+44162&sf=true&output=xml"
                                                                 target="_blank"><span
                                                                     class="fas fa-calendar-check"></span> Simpan
                                                                 Tanggal</a>
                                                             <a class="btn btn-sm btn-primary mt-1 text-size-caption"
-                                                                href="https://maps.app.goo.gl/Dhym5MrmAGv1h7Ms5"
+                                                                href="https://maps.app.goo.gl/QzVWXxNpZW9kTEyt9?g_st=iw"
                                                                 target="_blank"><span class="fas fa-route"></span>
                                                                 Navigasi Map</a>
                                                         </div>
@@ -1185,7 +1215,7 @@
                                                                 Resepsi</div>
                                                             <div
                                                                 class="schedule-date text-primary fs-8 text-size-caption">
-                                                                Rabu, 15 Desember 2025</div>
+                                                                Senin, 15 Desember 2025</div>
                                                             <div
                                                                 class="schedule-time text-secondary fs-8 text-size-caption">
                                                                 11:00 WIB</div>
@@ -1195,12 +1225,12 @@
                                                                 Sudirman Copong No.111, Desa, Sucikaler, Karangpawitan,
                                                                 Garut Regency, Jawa Barat 44162</div>
                                                             <a class="btn btn-sm btn-primary mt-1"
-                                                                href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=+Ajeng+Febrian+%26+Teddy+Prakarsa&amp;details=Hotel+X-More&amp;dates=20251231T040000.0Z/20251231T070000.0Z&amp;location=https://www.google.com/maps/place/Wevitation+-+Undangan+Digital+Pernikahan+Berbasis+Web&amp;trp=false&amp;sprop=&amp;sprop=name:"
+                                                                href="https://www.google.com/calendar/render?action=TEMPLATE&text=Pernikahan+Ilma+%26+Akmal&dates=20251215T020000Z/20251215T080000Z&details=Merupakan+kehormatan+bagi+kami+apabila+Bapak/Ibu+berkenan+hadir+dalam+acara+pernikahan+Ilma+%26+Akmal.%0A%0A%F0%9F%97%BA%EF%B8%8F+Google+Maps:+https://maps.app.goo.gl/QzVWXxNpZW9kTEyt9%3Fg_st%3Diw&location=GSC+Copong,+Jalan+Sudirman+Copong+No.111,+Desa,+Sucikaler,+Karangpawitan,+Garut+Regency,+Jawa+Barat+44162&sf=true&output=xml"
                                                                 target="_blank"><span
                                                                     class="fas fa-calendar-check"></span> Simpan
                                                                 Tanggal</a>
                                                             <a class="btn btn-sm btn-primary mt-1 text-size-caption"
-                                                                href="https://www.google.com/maps/place/Wevitation+-+Undangan+Digital+Pernikahan+Berbasis+Web"
+                                                                href="https://maps.app.goo.gl/QzVWXxNpZW9kTEyt9?g_st=iw"
                                                                 target="_blank"><span class="fas fa-route"></span>
                                                                 Navigasi Map</a>
                                                         </div>
@@ -1469,11 +1499,16 @@
                                             <div class="py-10 px-10">
                                                 <div class="text-primary fw-bold font-title mt-10 fs-3x aos-init"
                                                     data-aos="fade-up">Galeri</div>
-                                                <!-- <div class="w-100 mt-5 aos-init" data-aos="fade-up">
+                                                <div class="w-100 mt-5 aos-init" data-aos="fade-up">
                                                     <iframe class="w-100 h-200px rounded"
+                                                        src="https://www.youtube.com/embed/L3TfnYTp-Ew"
+                                                        title="Prewedding Ilma &amp; Akmal" frameborder="0"
+                                                        referrerpolicy="strict-origin-when-cross-origin"
+                                                        allowfullscreen></iframe>
+                                                    <!-- <iframe class="w-100 h-200px rounded"
                                                         src="//www.youtube.com/embed/Yfx3FYxOc7I"
-                                                        data-gtm-yt-inspected-8="true"></iframe>
-                                                </div> -->
+                                                        data-gtm-yt-inspected-8="true"></iframe> -->
+                                                </div>
                                                 <div class="splide mt-5 aos-init splide--slide splide--ltr splide--draggable splide--nav is-active is-initialized"
                                                     id="thumbnail-slider" data-aos="fade-up">
                                                     <div class="splide__arrows"><button
@@ -1926,7 +1961,7 @@
                                             data-aos="fade-up"
                                             style="margin-top: -2px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
                                             <div class="px-10 py-0 pb-20">
-                                                <div class="text-center p-5">
+                                                <!--<div class="text-center p-5">
                                                     <div class="fw-bold fs-3x text-center text-primary font-title mb-5">
                                                         Protokol Kesehatan</div>
                                                     <div>Acara ini diselenggarakan dengan mematuhi protokol kesehatan.
@@ -2100,7 +2135,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>-->
                                                 <div id="message-closing" class="pt-10">Atas kehadiran saudara/(i) &amp;
                                                     Do'a restunya, kami ucapkan terimakasih</div>
                                                 <div id="closing-thanks" class="mt-10">Hormat Kami</div>
@@ -2169,17 +2204,15 @@
             </ul>
         </div>
     </nav>
-    <div class="modal fade" tabindex="-1" id="modalMusic">
+    <!--<div class="modal fade" tabindex="-1" id="modalMusic">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Music</h5>
-                    <!--begin::Close-->
                     <div class="btn btn-icon btn-sm btn-active-light-primary btn-color-danger ms-2"
                         data-bs-dismiss="modal" aria-label="Close">
                         <i class="bi bi-x-circle fs-3"></i>
                     </div>
-                    <!--end::Close-->
                 </div>
 
                 <div class="modal-body text-center">
@@ -2200,7 +2233,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <div class="modal fade" tabindex="-1" id="modalRSVP">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -2306,14 +2339,23 @@
     <!--end::Page Custom Javascript-->
     <script>
         const urlParams = new URLSearchParams(window.location.search);
+        let isPlaying = false;
         const nama = urlParams.get('to') || '';
         document.querySelectorAll('.nama-tamu').forEach(function (el) {
             el.textContent = nama;
         });
+        const song = document.querySelector('#song')
+        const btn = document.getElementById("btnMusic");
+        const icon = document.getElementById("iconMusic");
         document.getElementById('form-name').value = nama;
         toastr.options = {
             "closeButton": true,
             "progressBar": true,
+        }
+        function playAudio() {
+            song.volume = 0.5;
+            isPlaying = true;
+            song.play();
         }
         $(document).ready(function () {
             var observer = lozad('.lozad', {
@@ -2331,6 +2373,21 @@
             dayjs.extend(dayjs_plugin_utc);
             dayjs.extend(dayjs_plugin_timezone);
         });
+        function toggleMusic() {
+            if (isPlaying) {
+                song.pause();
+                icon.classList.remove("bi-volume-up-fill");
+                icon.classList.add("bi-volume-mute-fill");
+            } else {
+                song.play();
+                icon.classList.remove("bi-volume-mute-fill");
+                icon.classList.add("bi-volume-up-fill");
+            }
+            isPlaying = !isPlaying;
+        }
+
+        btn.addEventListener("click", toggleMusic);
+
     </script>
     <script>
         $(document).ready(function () {
@@ -2411,9 +2468,9 @@
         var scrolling = false;
 
 
-        if (params.hasOwnProperty('auto_scroll') && params.auto_scroll) {
+        /*if (params.hasOwnProperty('auto_scroll') && params.auto_scroll) {
             shouldScroll = true;
-        }
+        }*/
 
         function pageScroll() {
             if (shouldScroll && !userInteraction) {
