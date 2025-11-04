@@ -1830,8 +1830,12 @@
                                                         <textarea type="text" name="ucapan" class="form-control h-150px"
                                                             placeholder="Tulis ucapan &amp; doa" required=""></textarea>
                                                     </div>
-                                                    <button type="submit" class="btn btn-light w-100 mt-2 aos-init"
-                                                        data-aos="fade-up">Kirim Ucapan</button>
+                                                    <button id="btnSend" type="submit"
+                                                        class="btn btn-light w-100 mt-2 aos-init" data-aos="fade-up">
+                                                        <span class="btn-text">Kirim Ucapan</span>
+                                                        <span class="spinner-border spinner-border-sm d-none"
+                                                            role="status"></span>
+                                                    </button>
                                                 </form>
                                                 <div class="my-5 scroll mh-400px aos-init" data-aos="fade-up"
                                                     id="ucapan">
@@ -2574,20 +2578,28 @@
     <script>
         document.getElementById('myForm').addEventListener('submit', function (e) {
             e.preventDefault();
+            const btn = document.getElementById("btnSend");
+            const btnText = btn.querySelector(".btn-text");
+            const btnSpinner = btn.querySelector(".spinner-border");
 
+            // Disable button + show loading
+            btn.disabled = true;
+            btnText.classList.add("d-none");
+            btnSpinner.classList.remove("d-none");
             const formData = {
                 Nama: this.name.value,
                 Ucapan: this.ucapan.value
             };
             $('#ucapan').prepend(`
-            <div class="rounded rounded-sm text-light p-3 mb-2 bg-primary">
-                <div class="fw-bold text-start">${formData.Nama}</div>
-                <div class="fw-light fs-9 mb-1 text-start"><span
-                        class="bi bi-clock-history me-1"></span>${dayjs().tz("Asia/Jakarta").format("dddd, DD MMMM YYYY HH:mm:ss")}
-                </div>
-                <div class="fs-7 text-start">${formData.Ucapan}</div>
+            <div class="rounded p-2 mb-2"
+                style="background: var(--bs-secondary)">
+                <div class="fw-bold text-start text-light">${formData.Nama}</div>
+                <div class="fw-light fs-9 mb-1 text-start text-light"><span
+                        class="bi bi-clock-history me-1"></span>${dayjs().tz("Asia/Jakarta").format("dddd, DD MMMM YYYY HH:mm:ss")}</div>
+                <div class="fs-7 text-start text-light">${formData.Ucapan}</div>
             </div>
             `);
+
             fetch('https://script.google.com/macros/s/AKfycbz3CAqrzl8Ei04QR57RGSLT-hrA87Kvi25OCL13vPQYnIwlRO7MSSEMdv8hbENxRDtVqA/exec', {
                 method: 'POST',
                 body: JSON.stringify(formData),
@@ -2597,13 +2609,15 @@
             })
                 .then(res => res.json())
                 .then(data => {
-                    // alert("Data submitted!");
                     console.log("RESPONSE", JSON.stringify(data))
                     this.reset();
                 })
                 .catch(err => {
-                    // alert("Error submitting form");
                     console.error(err);
+                }).finally(() => {
+                    btn.disabled = false;
+                    btnText.classList.remove("d-none");
+                    btnSpinner.classList.add("d-none");
                 });
         });
     </script>
